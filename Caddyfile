@@ -14,14 +14,6 @@ allofmy.work {
                 websocket
     }
 }
-dashboard.allofmy.work {
-        tls drswagboss@gmail.com
-        gzip
-        proxy / localhost:3000 {
-                transparent
-                websocket
-        }
-}
 photos.allofmy.work {
     tls drswagboss@gmail.com
     root /var/www/lychee
@@ -33,6 +25,34 @@ photos.allofmy.work {
         to {path} {path}/ /index.php?_url={uri}
     }
     proxy / photos:2500 {
+                transparent
+                websocket
+    }
+}
+pma.allofmy.work {
+    tls drswagboss@gmail.com
+    browse
+    gzip
+    fastcgi / 127.0.0.1:9000 php # php variant only
+    on startup php-fpm7 # php variant only
+    rewrite {
+        to {path} {path}/ /index.php?_url={uri}
+    }
+    proxy / phpmyadmin:8181 {
+                transparent
+                websocket
+    }
+}
+docker.allofmy.work {
+    tls drswagboss@gmail.com
+    browse
+    gzip
+    fastcgi / 127.0.0.1:9000 php # php variant only
+    on startup php-fpm7 # php variant only
+    rewrite {
+        to {path} {path}/ /index.php?_url={uri}
+    }
+    proxy / management:9000 {
                 transparent
                 websocket
     }
