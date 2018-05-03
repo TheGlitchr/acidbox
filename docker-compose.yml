@@ -1,23 +1,19 @@
 version: "3"
 services:
     db:
-      image: mysql:5.6
+      image: mariadb:latest
       container_name: mysql
       volumes:
         - /var/lib/mysql:/var/lib/mysql
       environment:
-        - MYSQL_ROOT_PASSWORD=acidbox
+        - MYSQL_ROOT_PASSWORD=Mandrake5
         - MYSQL_DATABASE=wordpress
         - MYSQL_USER=wordpress
         - MYSQL_PASSWORD=wordpress
       restart: unless-stopped
-      ports:
-        - 3306:3306
     web:
       image: abiosoft/caddy:php
       container_name: caddy
-      links:
-        - wordpress:wordpress
       volumes:
         - /var/www:/srv
         - /etc/caddy/Caddyfile:/etc/Caddyfile
@@ -36,8 +32,6 @@ services:
         - /etc/lychee:/config
         - /var/www/lychee:/pictures
       restart: unless-stopped
-      ports:
-        - 2500:80
     wordpress:
       image: wordpress
       container_name: wordpress
@@ -52,8 +46,6 @@ services:
         - WORDPRESS_DB_NAME=wordpress
         - WORDPRESS_TABLE_PREFIX=_blog #changeme
       restart: unless-stopped
-      ports:
-        - 8080:80
     phpmyadmin:
       image: phpmyadmin/phpmyadmin
       container_name: phpmyadmin
@@ -61,18 +53,9 @@ services:
         - db:mysql
       environment:
         - MYSQL_USERNAME=root
-        - MYSQL_ROOT_PASSWORD=acidbox
+        - MYSQL_ROOT_PASSWORD=Mandrake5
         - PMA_HOST=mysql
       restart: unless-stopped
-      ports:
-        - 8181:80
-    repo:
-      image: clue/h5ai
-      container_name: h5ai
-      volumes:
-        - /var/www/:/var/www
-      ports:
-        - 9600:80
     updates:
       image: v2tec/watchtower
       container_name: watchtower
@@ -86,6 +69,8 @@ services:
       volumes:
         - /etc/portainer:/data
         - /var/run/docker.sock:/var/run/docker.sock
-      restart: unless-stopped
-      ports:
-        - 9800:9000
+      restart: always
+networks:
+  default:
+    external:
+      name: acidbox
