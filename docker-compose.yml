@@ -40,11 +40,13 @@ services:
       container_name: wordpress
       links:
         - db:mysql
+      volumes:
+        - /var/www/wordpress:/var/www/html
       environment:
         - WORDPRESS_DB_HOST=db
         - WORDPRESS_DB_USER=acidbox
         - WORDPRESS_DB_PASSWORD=acidbox
-        - WORDPRESS_DB_NAME=allofmywork
+        - WORDPRESS_DB_NAME=acidbox
         - WORDPRESS_TABLE_PREFIX=_blog
       restart: unless-stopped
       ports:
@@ -61,6 +63,22 @@ services:
       restart: unless-stopped
       ports:
         - 8181:80
+    updates:
+      image: v2tec/watchtower
+      container_name: watchtower
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      restart: always
+      command: --interval 30
+    management:
+      image: portainer/portainer
+      container_name: portainer
+      volumes:
+        - /etc/portainer:/data
+        - /var/run/docker.sock:/var/run/docker.sock
+      restart: unless-stopped
+      ports:
+        - 9000:9000
 
 
       

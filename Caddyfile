@@ -1,0 +1,54 @@
+allofmy.work {
+    tls drswagboss@gmail.com
+    browse
+    gzip
+    fastcgi / 127.0.0.1:9000 php # php variant only
+    on startup php-fpm7 # php variant only
+    rewrite {
+        if {path} not_match ^\/wp-admin
+        to {path} {path}/ /index.php?_url={uri}
+    }
+    proxy / wordpress:8080 {
+                transparent
+                websocket
+    }
+}
+dashboard.allofmy.work {
+        tls drswagboss@gmail.com
+        gzip
+        proxy / localhost:3000 {
+                transparent
+                websocket
+        }
+}
+photos.allofmy.work {
+    tls drswagboss@gmail.com
+    root /var/www/lychee
+    browse
+    gzip
+    fastcgi / 127.0.0.1:9000 php # php variant only
+    on startup php-fpm7 # php variant only
+    rewrite {
+        to {path} {path}/ /index.php?_url={uri}
+    }
+    proxy / photos:2500 {
+                transparent
+                websocket
+    }
+}
+minio.allofmy.work {
+        tls drswagboss@gmail.com
+        gzip
+        proxy / localhost:9000 {
+                transparent
+                websocket
+        }
+}
+torrent.allofmy.work {
+        tls drswagboss@gmail.com
+        gzip
+        proxy / localhost:9200 {
+                transparent
+                websocket
+        }
+}
