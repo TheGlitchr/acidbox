@@ -6,7 +6,7 @@ services:
       volumes:
         - /opt/acidbox/mysql:/var/lib/mysql
       environment:
-        - MYSQL_ROOT_PASSWORD=Mandrake5
+        - MYSQL_ROOT_PASSWORD=acidbox
         - MYSQL_DATABASE=wordpress
         - MYSQL_USER=wordpress
         - MYSQL_PASSWORD=wordpress
@@ -53,7 +53,7 @@ services:
         - db:mysql
       environment:
         - MYSQL_USERNAME=root
-        - MYSQL_ROOT_PASSWORD=Mandrake5
+        - MYSQL_ROOT_PASSWORD=acidbox
         - PMA_HOST=mysql
       restart: unless-stopped
     updates:
