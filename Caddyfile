@@ -1,5 +1,7 @@
 allofmy.work {
-    tls drswagboss@gmail.com
+    tls drswagboss@gmail.com {
+        dns digitalocean
+    }
     gzip
     proxy / wordpress {
                 transparent
@@ -12,7 +14,9 @@ log stdout
 errors stderr
 }
 photos.allofmy.work {
-    tls drswagboss@gmail.com
+    tls drswagboss@gmail.com {
+        dns digitalocean
+    }
     browse
     gzip
     proxy / photos:80 {
@@ -21,7 +25,9 @@ photos.allofmy.work {
     }
 }
 pma.allofmy.work {
-    tls drswagboss@gmail.com
+    tls drswagboss@gmail.com {
+        dns digitalocean
+    }
     browse
     gzip
     proxy / phpmyadmin:80 {
@@ -30,7 +36,9 @@ pma.allofmy.work {
     }
 }
 docker.allofmy.work {
-    tls drswagboss@gmail.com
+    tls drswagboss@gmail.com {
+        dns digitalocean
+    }
     browse
     gzip
     proxy / management:9000 {
