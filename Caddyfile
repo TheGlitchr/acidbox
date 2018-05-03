@@ -57,3 +57,18 @@ docker.allofmy.work {
                 websocket
     }
 }
+files.allofmy.work {
+    tls drswagboss@gmail.com
+    browse
+    gzip
+    fastcgi / 127.0.0.1:9000 php # php variant only
+    on startup php-fpm7 # php variant only
+    rewrite {
+        to {path} {path}/ /index.php?_url={uri}
+    }
+    proxy / repo:9600 {
+                transparent
+                websocket
+    }
+}
+
