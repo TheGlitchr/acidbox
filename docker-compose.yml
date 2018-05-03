@@ -15,7 +15,7 @@ services:
       container_name: caddy
       volumes:
         - /var/www:/srv
-        - /etc/caddy:/etc
+        - /etc/caddy/Caddyfile:/etc/Caddyfile
       environment:
         - CADDYPATH=/etc/caddycerts
         - ACME_AGREE=true
