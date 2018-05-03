@@ -1,6 +1,6 @@
 ###Tested on Debian 9.4
 ###Run as root
-apt install -y sudo git wget curl
+apt install -y sudo git wget curl ufw
 wget -qO- https://get.docker.com/ | sh
 curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/bin/docker-compose
 chmod +x /usr/bin/docker-compose
@@ -8,3 +8,7 @@ mkdir /opt/acidbox
 chmod -R 754 /opt/acidbox
 chown -R $USER /opt/acidbox
 cp Caddyfile /opt/acidbox/caddy/
+ufw allow ssh
+ufw allow https
+ufw allow http
+ufw enable
