@@ -4,7 +4,7 @@ apt install -y sudo git wget curl
 wget -qO- https://get.docker.com/ | sh
 curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/bin/docker-compose
 chmod +x /usr/bin/docker-compose
-cp Caddyfile /etc/caddy/
-mkdir /var/www/wordpress
-mkdir /var/www/lychee
-chmod -R 755 /var/www/*
+mkdir /opt/acidbox
+chmod -R 754 /opt/acidbox
+chown -R $USER /opt/acidbox
+cp Caddyfile /opt/acidbox/caddy/
