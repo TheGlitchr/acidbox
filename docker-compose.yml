@@ -44,6 +44,10 @@ services:
         - /var/www/wordpress:/var/www/html
       environment:
         - WORDPRESS_DB_HOST=db
+        - WORDPRESS_DB_USER=acidbox #changeme
+        - WORDPRESS_DB_PASSWORD=acidbox #changeme
+        - WORDPRESS_DB_NAME=acidbox #changeme
+        - WORDPRESS_TABLE_PREFIX=_blog #changeme
       restart: unless-stopped
       ports:
         - 8080:80
