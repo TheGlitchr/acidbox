@@ -7,4 +7,3 @@ cp Caddyfile /etc/caddy/
 mkdir /var/www/wordpress
 mkdir /var/www/lychee
 chmod -R 755 /var/www/*
-docker-compose up -d --remove-orhpans

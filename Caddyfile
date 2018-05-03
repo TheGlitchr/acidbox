@@ -1,4 +1,4 @@
-allofmy.work {
+allofmy.work { 
     tls drswagboss@gmail.com
     root /var/www/wordpress
     browse

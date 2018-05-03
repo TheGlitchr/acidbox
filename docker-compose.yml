@@ -6,9 +6,9 @@ services:
       volumes:
         - /var/lib/mysql:/var/lib/mysql
       environment:
-        - MYSQL_ROOT_PASSWORD=acidbox
-        - MYSQL_USER=acidbox
-        - MYSQL_PASSWORD=acidbox
+        - MYSQL_ROOT_PASSWORD=acidbox #changeme
+        - MYSQL_USER=acidbox #changeme
+        - MYSQL_PASSWORD=acidbox #changeme
       restart: unless-stopped
       ports:
         - 3306:3306
@@ -44,10 +44,6 @@ services:
         - /var/www/wordpress:/var/www/html
       environment:
         - WORDPRESS_DB_HOST=db
-        - WORDPRESS_DB_USER=acidbox
-        - WORDPRESS_DB_PASSWORD=acidbox
-        - WORDPRESS_DB_NAME=acidbox
-        - WORDPRESS_TABLE_PREFIX=_blog
       restart: unless-stopped
       ports:
         - 8080:80
