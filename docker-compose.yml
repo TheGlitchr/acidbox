@@ -20,6 +20,7 @@ services:
         - /opt/acidbox/caddy/certs:/root/.caddy
       environment:
         - ACME_AGREE=true
+        - DO_AUTH_TOKEN=your_token_here
       restart: unless-stopped
       ports:
         - 80:80
