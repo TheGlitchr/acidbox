@@ -7,8 +7,6 @@ services:
         - /var/lib/mysql:/var/lib/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=acidbox #changeme
-        - MYSQL_USER=acidbox #changeme
-        - MYSQL_PASSWORD=acidbox #changeme
       restart: unless-stopped
       ports:
         - 3306:3306
