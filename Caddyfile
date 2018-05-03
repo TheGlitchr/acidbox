@@ -1,6 +1,6 @@
 allofmy.work { 
     tls drswagboss@gmail.com
-    root /var/www/wordpress
+    root /srv/wordpress
     browse
     gzip
     fastcgi / 127.0.0.1:9000 php # php variant only
@@ -16,7 +16,7 @@ allofmy.work {
 }
 photos.allofmy.work {
     tls drswagboss@gmail.com
-    root /var/www/lychee
+    root /srv/lychee
     browse
     gzip
     fastcgi / 127.0.0.1:9000 php # php variant only
