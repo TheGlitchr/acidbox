@@ -1,0 +1,5 @@
+###Tested on Debian 9.4
+sudo apt install -y sudo git wget curl
+wget -qO- https://get.docker.com/ | sh
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
