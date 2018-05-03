@@ -37,19 +37,3 @@ photos.allofmy.work {
                 websocket
     }
 }
-minio.allofmy.work {
-        tls drswagboss@gmail.com
-        gzip
-        proxy / localhost:9000 {
-                transparent
-                websocket
-        }
-}
-torrent.allofmy.work {
-        tls drswagboss@gmail.com
-        gzip
-        proxy / localhost:9200 {
-                transparent
-                websocket
-        }
-}
