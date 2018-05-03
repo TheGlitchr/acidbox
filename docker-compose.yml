@@ -4,7 +4,7 @@ services:
       image: mariadb:latest
       container_name: mysql
       volumes:
-        - /var/lib/mysql:/var/lib/mysql
+        - /opt/acidbox/mysql:/var/lib/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=Mandrake5
         - MYSQL_DATABASE=wordpress
@@ -15,9 +15,9 @@ services:
       image: abiosoft/caddy:php
       container_name: caddy
       volumes:
-        - /var/www:/srv
-        - /etc/caddy/Caddyfile:/etc/Caddyfile
-        - /etc/caddy/certs:/root/.caddy
+        - /opt/acidbox/www:/srv
+        - /opt/acidbox/caddy/Caddyfile:/etc/Caddyfile
+        - /opt/acidbox/caddy/certs:/root/.caddy
       environment:
         - ACME_AGREE=true
       restart: unless-stopped
@@ -29,8 +29,8 @@ services:
       image: linuxserver/lychee
       container_name: lychee
       volumes:
-        - /etc/lychee:/config
-        - /var/www/lychee:/pictures
+        - /opt/acidbox/lychee/config:/config
+        - /opt/acidbox/lychee/data:/pictures
       restart: unless-stopped
     wordpress:
       image: wordpress
@@ -38,7 +38,7 @@ services:
       links:
         - db:mysql
       volumes:
-        - /var/www/wordpress:/var/www/html
+        - /opt/acidbox/wordpress:/var/www/html
       environment:
         - WORDPRESS_DB_HOST=db
         - WORDPRESS_DB_USER=wordpress
@@ -67,10 +67,9 @@ services:
       image: portainer/portainer
       container_name: portainer
       volumes:
-        - /etc/portainer:/data
+        - /opt/acidbox/portainer:/data
         - /var/run/docker.sock:/var/run/docker.sock
       restart: always
 networks:
   default:
-    external:
-      name: acidbox
+     name: acidbox
