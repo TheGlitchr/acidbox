@@ -73,4 +73,5 @@ services:
       restart: always
 networks:
   default:
+    external:
      name: acidbox
