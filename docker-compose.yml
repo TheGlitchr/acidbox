@@ -12,7 +12,7 @@ services:
         - MYSQL_PASSWORD=wordpress
       restart: unless-stopped
     web:
-      image: abiosoft/caddy:php
+      image: legsopenwild/acidbox
       container_name: caddy
       volumes:
         - /opt/acidbox/www:/srv
