@@ -1,42 +1,36 @@
-allofmy.work {
-    tls drswagboss@gmail.com {
+change.me {
+    tls example@exmaple.com {
         dns digitalocean
     }
     gzip
     proxy / wordpress {
                 transparent
     }
-    rewrite {
-        if {path} not_match ^\/wp-admin
-        to {path} {path}/ /index.php?_url={uri}
-    }
-log stdout
-errors stderr
 }
-photos.allofmy.work {
-    tls drswagboss@gmail.com {
+photos.change.me {
+    tls example@exmaple.com {
         dns digitalocean
     }
     browse
     gzip
-    proxy / photos:80 {
+    proxy / photos {
                 transparent
                 websocket
     }
 }
-pma.allofmy.work {
-    tls drswagboss@gmail.com {
+pma.change.me {
+    tls example@exmaple.com {
         dns digitalocean
     }
     browse
     gzip
-    proxy / phpmyadmin:80 {
+    proxy / phpmyadmin {
                 transparent
                 websocket
     }
 }
-docker.allofmy.work {
-    tls drswagboss@gmail.com {
+docker.change.me {
+    tls example@exmaple.com {
         dns digitalocean
     }
     browse
